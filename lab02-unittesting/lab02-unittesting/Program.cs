@@ -8,45 +8,69 @@ namespace lab02_unittesting
 
         static void Main(string[] args)
         {
-            
-            Console.WriteLine("Welcome to Beck's Best Bank!");
-            Console.WriteLine("Please select from the following options:");
-            Console.WriteLine("     1 -- View Balance");
-            Console.WriteLine("     2 -- Withdraw");
-            Console.WriteLine("     3 -- Deposit");
-            Console.WriteLine("     4 -- Exit");
-            Console.Write("Enter your selection [1,2,3,4]: ");
-            int userSelect = Int32.Parse(Console.ReadLine());
-
-            switch (userSelect)
+            bool loop = true;
+            while (loop)
             {
-                case 1:
-                    Console.WriteLine("Your account balance is ${0}", balance);
-                    break;
-                case 2:
-                    Console.WriteLine("Enter the amount of your withdrawal: ");
-                    double moneyOut;
-                    Double.TryParse(Console.ReadLine(), out moneyOut);
-                    Console.WriteLine("Your new balance is ${0}", Withdraw(moneyOut));
-                    break;
-                case 3:
-                    Console.WriteLine("Enter the amount of your deposit: ");
-                    double moneyIn;
-                    Double.TryParse(Console.ReadLine(), out moneyIn);
-                    Console.WriteLine("Your new balance is ${0}", Deposit(moneyIn));
-                    break;
+                Console.WriteLine("Welcome to Beck's Best Bank!");
+                Console.WriteLine("Please select from the following options:");
+                Console.WriteLine("     1 -- View Balance");
+                Console.WriteLine("     2 -- Withdraw");
+                Console.WriteLine("     3 -- Deposit");
+                Console.WriteLine("     4 -- Exit");
+                Console.Write("Enter your selection [1,2,3,4]: ");
+                int userSelect = Int32.Parse(Console.ReadLine());
 
+                switch (userSelect)
+                {
+                    case 1:
+                        Console.WriteLine("Your account balance is ${0}", balance);
+                        break;
+                    case 2:
+                        Console.WriteLine("Enter the amount of your withdrawal: ");
+                        double moneyOut;
+                        Double.TryParse(Console.ReadLine(), out moneyOut);
+                        Console.WriteLine(Withdraw(moneyOut));
+                        break;
+                    case 3:
+                        Console.WriteLine("Enter the amount of your deposit: ");
+                        double moneyIn;
+                        Double.TryParse(Console.ReadLine(), out moneyIn);
+                        Console.WriteLine(Deposit(moneyIn));
+                        break;
+                    case 4:
+                        break;
+                }
+
+                Console.WriteLine("Please select another option: ");
+                int selection = Int32.Parse(Console.ReadLine());
+                if (selection == 1 || selection == 2 || selection == 3 || selection == 4)
+                {
+                    loop = false;
+                }
             }
+            
         }
 
-        static double Withdraw(double moneyOut)
+        static string Withdraw(double moneyOut)
         {
-            return balance -= moneyOut;
+            if (moneyOut > balance)
+            {
+                return "Insufficent funds.";
+            }
+
+            balance += moneyOut;
+            return $"New balance is ${balance}";
         }
 
-        static double Deposit(double moneyIn)
+        static string Deposit(double moneyIn)
         {
-            return balance += moneyIn;
+            if (moneyIn < 0)
+            {
+                return "Insufficient deposit amount.";
+            }
+
+            balance += moneyIn;
+            return $"New balance is ${balance}";
         }
 
 
