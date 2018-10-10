@@ -42,9 +42,11 @@ namespace lab02_unittesting
                         break;
                 }
 
-                Console.WriteLine("Please select another option: ");
+                Console.WriteLine("Please select from the following options:");
+                Console.WriteLine("     1 -- Go to Main Menu");
+                Console.WriteLine("     4 -- Exit");
                 int selection = Int32.Parse(Console.ReadLine());
-                if (selection == 1 || selection == 2 || selection == 3)
+                if (selection == 1)
                 {
                     selection = userSelect;
                    
