@@ -4,7 +4,7 @@ namespace lab02_unittesting
 {
     class Program
     {
-        public static decimal balance = 3000;
+        public static double balance = 3000;
 
         static void Main(string[] args)
         {
@@ -25,19 +25,30 @@ namespace lab02_unittesting
                     break;
                 case 2:
                     Console.WriteLine("Enter the amount of your withdrawal: ");
-                    decimal moneyOut = Int32.Parse(Console.ReadLine());
+                    double moneyOut;
+                    Double.TryParse(Console.ReadLine(), out moneyOut);
                     Console.WriteLine("Your new balance is ${0}", Withdraw(moneyOut));
                     break;
-
+                case 3:
+                    Console.WriteLine("Enter the amount of your deposit: ");
+                    double moneyIn;
+                    Double.TryParse(Console.ReadLine(), out moneyIn);
+                    Console.WriteLine("Your new balance is ${0}", Deposit(moneyIn));
+                    break;
 
             }
         }
 
-        static decimal Withdraw(decimal moneyOut)
+        static double Withdraw(double moneyOut)
         {
             return balance -= moneyOut;
         }
 
-       
+        static double Deposit(double moneyIn)
+        {
+            return balance += moneyIn;
+        }
+
+
     }
 }
