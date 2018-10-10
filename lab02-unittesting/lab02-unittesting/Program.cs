@@ -38,14 +38,19 @@ namespace lab02_unittesting
                         Console.WriteLine(Deposit(moneyIn));
                         break;
                     case 4:
+                        Environment.Exit(0);
                         break;
                 }
 
                 Console.WriteLine("Please select another option: ");
                 int selection = Int32.Parse(Console.ReadLine());
-                if (selection == 1 || selection == 2 || selection == 3 || selection == 4)
+                if (selection == 1 || selection == 2 || selection == 3)
                 {
-                    loop = false;
+                    selection = userSelect;
+                   
+                } else if (selection == 4)
+                {
+                    Environment.Exit(0);
                 }
             }
             
