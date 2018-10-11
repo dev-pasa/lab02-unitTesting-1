@@ -20,6 +20,15 @@ namespace lab02_unittesting
                 Console.Write("Enter your selection [1,2,3,4]: ");
                 int userSelect = Int32.Parse(Console.ReadLine());
 
+                try
+                {
+
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Please enter a valid option [1,2,3,4].");
+                }
+                
                 switch (userSelect)
                 {
                     case 1:
@@ -30,12 +39,14 @@ namespace lab02_unittesting
                         double moneyOut;
                         Double.TryParse(Console.ReadLine(), out moneyOut);
                         Console.WriteLine(Withdraw(moneyOut));
+                        Console.WriteLine($"New balance is ${balance}");
                         break;
                     case 3:
                         Console.WriteLine("Enter the amount of your deposit: ");
                         double moneyIn;
                         Double.TryParse(Console.ReadLine(), out moneyIn);
                         Console.WriteLine(Deposit(moneyIn));
+                        Console.WriteLine($"Current balance is ${balance}");
                         break;
                     case 4:
                         Environment.Exit(0);
@@ -64,9 +75,8 @@ namespace lab02_unittesting
             {
                 return "Insufficent funds.";
             }
-
-            balance += moneyOut;
-            return $"New balance is ${balance}";
+            balance -= moneyOut;
+            return "Withdraw success!";
         }
 
         static string Deposit(double moneyIn)
@@ -75,9 +85,8 @@ namespace lab02_unittesting
             {
                 return "Insufficient deposit amount.";
             }
-
             balance += moneyIn;
-            return $"New balance is ${balance}";
+            return $"Deposit success!";
         }
 
 
