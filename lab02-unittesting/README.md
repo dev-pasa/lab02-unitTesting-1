@@ -11,4 +11,9 @@ This console application acts like a bank ATM that allows the user to view accou
 
 [Insufficient Funds](../assets/lab2c.png)
 
+# Load Application
+1.	in terminal: git clone https://github.com/mtncrawler/lab02-unitTesting
+2.	open project in Visual Studio
+3.	open lab02-unittesting.sln
+4.	run project without debugging 
 
