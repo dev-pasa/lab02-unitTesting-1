@@ -4,6 +4,7 @@ namespace lab02_unittesting
 {
     public class Program
     {
+        //declares an existing balance in the bank account
         public static double balance = 3000;
 
         public static void Main(string[] args)
@@ -66,9 +67,9 @@ namespace lab02_unittesting
                     Environment.Exit(0);
                 }
             }
-            
         }
 
+        //method to withdraw from the bank account and deduct from the balance or prompt the user for a valid wihtdraw amount
         public static string Withdraw(double moneyOut)
         {
             if(moneyOut < 0)
@@ -83,6 +84,7 @@ namespace lab02_unittesting
             return "Withdraw success!";
         }
 
+        //method to deposit to the account or promt user for a valid deposit amount
         public static string Deposit(double moneyIn)
         {
             if (moneyIn < 0)
@@ -92,7 +94,5 @@ namespace lab02_unittesting
             balance += moneyIn;
             return "Deposit success!";
         }
-
-
     }
 }

@@ -6,24 +6,23 @@ namespace lab02Test
 {
     public class UnitTest1
     {
-        [Fact]
-        public void NotEnoughFundsReturned()
+        //tests Withdraw method for correct outputs: 2 valid and 1 invalid inputs
+        [Theory]
+        [InlineData(3100, "Insufficient funds.")]
+        [InlineData(500, "Withdraw success!")]
+        [InlineData(-100, "Invalid withdraw amount.")]
+        public void WithdrawReturnsCorrectly(int actual, string expected )
         {
-            Assert.Equal("Insufficient funds.", Program.Withdraw(3100));
+            Assert.Equal(expected, Program.Withdraw(actual));
         }
 
-        [Fact]
-        public void SuccessReturned()
+        //test the Deposit method for correct output: 1 valid an 1 invalid input
+        [Theory]
+        [InlineData(-100, "Insufficient deposit amount.")]
+        [InlineData(500, "Deposit success!")]
+        public void DepositReturnsCorrectly(int actual, string expected)
         {
-            Assert.Equal("Withdraw success!", Program.Withdraw(500));
-        }
-
-        [Fact]
-        public void InvalidWithdrawReturned()
-        {
-            Assert.Equal("Invalid withdraw amount.", Program.Withdraw(-100));
-        }
-
-
+            Assert.Equal(expected, Program.Deposit(actual));
+        }    
     }
 }
