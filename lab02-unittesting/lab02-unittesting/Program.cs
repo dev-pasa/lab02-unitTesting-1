@@ -2,11 +2,11 @@
 
 namespace lab02_unittesting
 {
-    class Program
+    public class Program
     {
         public static double balance = 3000;
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             bool loop = true;
             while (loop)
@@ -39,7 +39,7 @@ namespace lab02_unittesting
                         double moneyOut;
                         Double.TryParse(Console.ReadLine(), out moneyOut);
                         Console.WriteLine(Withdraw(moneyOut));
-                        Console.WriteLine($"New balance is ${balance}");
+                        Console.WriteLine($"Current balance is ${balance}");
                         break;
                     case 3:
                         Console.WriteLine("Enter the amount of your deposit: ");
@@ -69,24 +69,28 @@ namespace lab02_unittesting
             
         }
 
-        static string Withdraw(double moneyOut)
+        public static string Withdraw(double moneyOut)
         {
-            if (moneyOut > balance)
+            if(moneyOut < 0)
             {
-                return "Insufficent funds.";
+                return "Invalid withdraw amount.";
+            }
+            else if (moneyOut > balance)
+            {
+                return "Insufficient funds.";
             }
             balance -= moneyOut;
             return "Withdraw success!";
         }
 
-        static string Deposit(double moneyIn)
+        public static string Deposit(double moneyIn)
         {
             if (moneyIn < 0)
             {
                 return "Insufficient deposit amount.";
             }
             balance += moneyIn;
-            return $"Deposit success!";
+            return "Deposit success!";
         }
 
 
